@@ -1,2 +1,1 @@
-# theSweetSpot
-# theSweetSpot.github.io
+#theSweetSpot.github.io
