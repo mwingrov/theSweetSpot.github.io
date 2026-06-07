@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { WHATSAPP_NUMBER, waLink } from "@/lib/bakery";
+import { WHATSAPP_NUMBER, waLink } from "../lib/bakery";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
