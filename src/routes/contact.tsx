@@ -90,8 +90,8 @@ function ContactPage() {
           <div className="contact-info reveal">
             <h3>Get in touch</h3>
             <p>📞 <strong>+27 73 884 5264</strong></p>
-            <p>✉️ <strong>hello@sweetcrumb.co.za</strong></p>
-            <p>📍 <strong>123 Bakery Lane, Your City</strong></p>
+            <p>✉️ <strong>jjbeukes@thesweetspot.co.za</strong></p>
+            <p>📍 <strong>123 Bakery Lane, Klawer</strong></p>
             <div style={{ marginTop: "1rem" }}>
               <a
                 className="btn btn-primary"

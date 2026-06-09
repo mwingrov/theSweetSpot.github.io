@@ -1,5 +1,5 @@
 // Bakery site interactions
-const WHATSAPP_NUMBER = "27000000000"; // replace with real number (international format, no +)
+const WHATSAPP_NUMBER = "+27738845264"; // replace with real number (international format, no +)
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu

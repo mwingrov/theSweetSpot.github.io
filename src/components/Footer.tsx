@@ -15,7 +15,15 @@ export function Footer() {
             <div className="socials">
               <a href="#" aria-label="Instagram">📷</a>
               <a href="#" aria-label="Facebook">📘</a>
-              <a href="#" aria-label="TikTok">🎵</a>
+              <a href="#" aria-label="TikTok">
+                <svg xmlns="http://w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                      </a>
             </div>
           </div>
           <div>
@@ -32,8 +40,8 @@ export function Footer() {
             <h4>Contact</h4>
             <ul>
               <li>📞 +27 73 884 5264</li>
-              <li>✉️ hello@sweetcrumb.co.za</li>
-              <li>📍 123 Bakery Lane, Your City</li>
+              <li>✉️ jjbeukes@thesweetspot.co.za</li>
+              <li>📍 123 Bakery Lane, Klawer</li>
             </ul>
           </div>
           <div>
