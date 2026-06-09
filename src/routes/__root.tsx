@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
 } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -27,23 +28,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
-
-  // Force scroll animations to refresh whenever the pathname changes
-  useEffect(() => {
-    // 1. Instantly force the window back to the top of the viewpoint
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-
-    // 2. Locate all hidden elements on the new page template
-    const elements = document.querySelectorAll(".reveal");
-
-    // 3. Fail-safe: If an element is already at the top of the new viewport, make it visible instantly
-    elements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        el.classList.add("active"); // Or whatever class your CSS uses to show elements (e.g., .visible, .show)
-      }
-    });
-  }, [location.pathname]); // Fires every single time you click a <Link> to another route
 
   return (
     <section>
@@ -77,6 +61,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // 2. Pure client-side wrapper that injects layout shell and route outlets
 function App() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation(); // 1. Monitor the route state
+
+  useEffect(() => {
+    // 2. Immediate fail-safe: Force a scroll reset on the new page view
+    window.scrollTo(0, 0);
+
+    // 3. Define a quick check function for elements inside the viewport
+    const runRevealCheck = () => {
+      const elements = document.querySelectorAll(".reveal");
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        // If the element is within or above the viewport, show it
+        if (rect.top < window.innerHeight) {
+          el.classList.add("in");
+        }
+      });
+    };
+
+    // 4. Run it immediately for elements already at the top of the new page
+    setTimeout(runRevealCheck, 50);
+
+    // 5. Re-attach scroll event listener for any elements further down the page
+    window.addEventListener("scroll", runRevealCheck);
+    return () => window.removeEventListener("scroll", runRevealCheck);
+  }, [location.pathname]); // 🔥 Fires every time you change pages!
   return (
     <QueryClientProvider client={queryClient}>
       <Layout>
