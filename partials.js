@@ -55,7 +55,7 @@ const FOOTER_HTML = `
         </ul>
       </div>
     </div>
-    <div class="copy">© <span id="yr"></span> The Sweet Spot Bakery. All rights reserved.</div>
+    <div class="copy">© <span id="yr"></span> The Sweet Spot Bakery. All rights reserved. Made by Mark Wingrove - email: mwingrove@gmail.com</div>
   </div>
 </footer>
 <a class="fab fab-wa" data-wa="Hi! I'd like to place an order." aria-label="WhatsApp">💬</a>
